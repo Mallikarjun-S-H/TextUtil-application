@@ -39,18 +39,18 @@ export default function TextForm(props) {
     <div className="mb-3">
     <textarea className={`form-control text-${props.modeText} bg-${props.mode}`} value={text} onChange={handleOnChange} id="myBox" rows="8" ></textarea>
     </div>
-    <button type="button" onClick={handleUpClick} className="btn btn-primary mx-1">Convert To Uppercase</button>          
-    <button type="button" onClick={handleLowClick} className="btn btn-primary mx-1">Convert To Lowercase</button>                 
-    <button type="button" onClick={handleClearClick} className="btn btn-primary mx-1">Clear Text</button>                 
-    <button type="button" onClick={handleCopyClick} className="btn btn-primary mx-1">Copy Text</button>                 
-    <button type="button" onClick={handleExtrClick} className="btn btn-primary mx-1">Remove Extra Space</button>                 
+    <button type="button" disabled = {text.length ===0} onClick={handleUpClick} className="btn btn-primary mx-1 my-1">Convert To Uppercase</button>          
+    <button type="button" disabled = {text.length ===0} onClick={handleLowClick} className="btn btn-primary mx-1 my-1">Convert To Lowercase</button>                 
+    <button type="button" disabled = {text.length ===0} onClick={handleClearClick} className="btn btn-primary mx-1 my-1">Clear Text</button>                 
+    <button type="button" disabled = {text.length ===0} onClick={handleCopyClick} className="btn btn-primary mx-1 my-1">Copy Text</button>                 
+    <button type="button" disabled = {text.length ===0} onClick={handleExtrClick} className="btn btn-primary mx-1 my-1">Remove Extra Space</button>                 
     </div>
           
     <div className='container my-3'>
-              <h1>Your Text Summary</h1>    
-              <p>{text.split(" ").length>1 ? text.split(" ").length - 1: 0 } words and {text.length} characters &#10072; {0.08 * text.split(" ").length} Minutes of read</p>           
-              <h2>Preview</h2>
-              <p>{text.length>0 ? text: "Enter text in the text box to preview it here"}</p>
+      <h1>Your Text Summary</h1>    
+      <p>{text.split(" ").filter((element) => element.length !==0).length} words and {text.length} characters &#10072; {0.08 * text.split(" ").filter((element) => element.length !==0).length} Minutes of read</p>           
+      <h2>Preview</h2>
+      <p>{text.length>0 ? text: "Enter text in the text box to preview it here"}</p>
 
     </div>
 
